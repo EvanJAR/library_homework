@@ -23,4 +23,10 @@ public class Library {
     public int getCapacity() {
         return this.capacity;
     }
+
+    public Book removeBook(Book book1) {
+        int index = this.books.indexOf(book1);
+        return this.books.remove(index);
+
+    }
 }
