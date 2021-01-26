@@ -11,7 +11,7 @@ public class LibraryTest {
 
     @Before
     public void before(){
-        library = new Library();
+        library = new Library(10);
         book1 = new Book("On Beauty", "Zadie Smith", "Literary Fiction");
         book2 = new Book("Infinite Jest", "David Foster Wallace", "Literary Fiction");
         book3 = new Book("Game of Thrones", "George R. R. Martin", "Fantasy");
@@ -28,6 +28,28 @@ public class LibraryTest {
         library.addBook(book2);
         library.addBook(book3);
         Assert.assertEquals(3, library.countBooks());
+    }
+
+    @Test
+    public void libraryHasCapacity(){
+        Assert.assertEquals(10, library.getCapacity());
+    }
+
+    @Test
+    public void libraryCannotAddPastCapacity(){
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addBook(book3);
+        Assert.assertEquals(10, library.countBooks());
     }
 
 }
